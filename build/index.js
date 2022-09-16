@@ -24,13 +24,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var dotenv = __importStar(require("dotenv"));
+var imageRoute_1 = __importDefault(require("./routes/imageRoute"));
 dotenv.config();
 var PORT = process.env.PORT || 3000;
 var app = (0, express_1.default)();
-app.get('/', function (req, res) {
-    res.send('Hi there!');
-});
+// Our api route.
+app.use('/api/images', imageRoute_1.default);
 app.listen(PORT, function () {
-    console.log("Server is up at prot:".concat(PORT));
+    console.log("Server running on port ".concat(PORT));
 });
 exports.default = app;

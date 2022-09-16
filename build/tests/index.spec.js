@@ -41,17 +41,125 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var supertest_1 = __importDefault(require("supertest"));
 var index_1 = __importDefault(require("../index"));
+var checkIfImageExists_1 = __importDefault(require("../utils/checkIfImageExists"));
+var checkIfImageresized_1 = __importDefault(require("../utils/checkIfImageresized"));
+var resizedImageAndSave_1 = __importDefault(require("../utils/resizedImageAndSave"));
 // create a request object
 var request = (0, supertest_1.default)(index_1.default);
-describe('Test endpoint response', function () {
-    it('test hello world endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
+describe('Test image resize endpoint', function () {
+    it('success case ✅', function () { return __awaiter(void 0, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/')];
+                case 0: return [4 /*yield*/, request.get('/api/images/resize?height=300&width=300&imageName=img2')];
                 case 1:
                     response = _a.sent();
                     expect(response.status).toBe(200);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('fail case: missing inputs ❎', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request.get('/api/images/resize?height=300&width=300')];
+                case 1:
+                    response = _a.sent();
+                    expect(response.status).toBe(400);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('fail case: invalid image name ❎', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request.get('/api/images/resize?height=300&width=300&imageName=invalidImageName')];
+                case 1:
+                    response = _a.sent();
+                    expect(response.status).toBe(400);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+});
+// Check if image exists
+describe('Test checkIfImageExists function', function () {
+    it('success case ✅', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, checkIfImageExists_1.default)('img2')];
+                case 1:
+                    result = _a.sent();
+                    expect(result).toBe(true);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('fail case: invalid image name ❎', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, checkIfImageExists_1.default)('img99')];
+                case 1:
+                    result = _a.sent();
+                    expect(result).toBe(false);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+});
+// Check if image resized
+describe('Test checkIfImageResized function', function () {
+    it('success case ✅', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, checkIfImageresized_1.default)('img2', 300, 300)];
+                case 1:
+                    result = _a.sent();
+                    expect(result).toBe(true);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('fail case: image not resized yet ❎', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, checkIfImageresized_1.default)('img1', 300, 300)];
+                case 1:
+                    result = _a.sent();
+                    expect(result).toBe(false);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+});
+// Resize image and save it
+describe('Test resizeImageAndSave function', function () {
+    it('success case ✅', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, resizedImageAndSave_1.default)('img2', 200, 200)];
+                case 1:
+                    result = _a.sent();
+                    expect(result).toBe(true);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('fail case: faild to resize image ❎', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, resizedImageAndSave_1.default)('img99', 200, 200)];
+                case 1:
+                    result = _a.sent();
+                    expect(result).toBe(false);
                     return [2 /*return*/];
             }
         });

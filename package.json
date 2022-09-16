@@ -8,9 +8,7 @@
     "dev": "nodemon ./src/index.ts",
     "clean": "rimraf build/",
     "build": "yarn clean && npx tsc",
-    "start": "npm run build && nodemon build/index.js",
-    "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx}'",
-    "lint": "eslint . --ext .ts"
+    "start": "npm run build && nodemon build/index.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +25,7 @@
     "express": "^4.17.1",
     "jasmine": "^3.10.0",
     "jasmine-spec-reporter": "^7.0.0",
-    "morgan": "^1.10.0",
+    "jimp": "^0.16.2",
     "supertest": "^6.1.6"
   },
   "keywords": [],
