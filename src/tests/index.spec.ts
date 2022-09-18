@@ -23,6 +23,12 @@ describe('Test image resize endpoint', () => {
     )
     expect(response.status).toBe(400)
   })
+  it('fail case: invalid height & width ❎', async () => {
+    const response = await request.get(
+      '/api/images/resize?height=fsdfs&width=-300&imageName=invalidImageName'
+    )
+    expect(response.status).toBe(400)
+  })
 })
 
 // Check if image exists

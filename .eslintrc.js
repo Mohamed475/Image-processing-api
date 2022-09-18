@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   env: {
     es2021: true,
     node: true,
@@ -14,15 +15,14 @@ module.exports = {
   rules: {
     semi: ['error', 'never'],
     'no-use-before-define': ['error', { functions: true, classes: true }],
-    'prettier/prettier': 2, // Means error
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
     'no-console': 1, // Means warning
     'no-var': 'error',
     'prefer-const': 'error',
   },
-  'prettier/prettier': [
-    'error',
-    {
-      endOfLine: 'auto',
-    },
-  ],
 }

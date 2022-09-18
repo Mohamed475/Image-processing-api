@@ -1,4 +1,4 @@
-import express, { Application, Request, Response } from 'express'
+import express from 'express'
 import imageProcessingController from '../controllers/imageProcessing'
 
 const router = express.Router()

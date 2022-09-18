@@ -12,11 +12,11 @@ jasmine.getEnv().clearReporters()
 jasmine.getEnv().addReporter(
   new SpecReporter({
     suite: {
-      displayNumber: true
+      displayNumber: true,
     },
     spec: {
-      displayStacktrace: StacktraceOption.NONE
+      displayStacktrace: StacktraceOption.NONE,
     },
-    customProcessors: [CustomProcessor]
+    customProcessors: [CustomProcessor],
   })
 )

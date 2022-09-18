@@ -1,4 +1,4 @@
-import express, { Application, Request, Response } from 'express'
+import express, { Application } from 'express'
 import * as dotenv from 'dotenv'
 import imageRoute from './routes/imageRoute'
 
@@ -10,8 +10,6 @@ const app: Application = express()
 // Our api route.
 app.use('/api/images', imageRoute)
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-})
+app.listen(PORT)
 
 export default app

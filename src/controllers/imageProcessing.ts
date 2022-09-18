@@ -15,6 +15,16 @@ const imageProcessingController = async (req: Request, res: Response) => {
     return res.status(400).send('Height and Width must be only numbers')
   }
 
+  // Validate imageName to be a string
+  if (typeof imageName !== 'string') {
+    return res.status(400).send('Image name must be a string')
+  }
+
+  // Validate height and width to be positive numbers
+  if (Number(height) < 0 || Number(width) < 0) {
+    return res.status(400).send('Height and Width must be positive numbers')
+  }
+
   // Validate inputs
   if (!height || !width || !imageName) {
     return res.status(400).send('Missing parameters, required: height, width, imageName')
