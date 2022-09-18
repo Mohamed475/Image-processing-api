@@ -9,6 +9,8 @@ basic api using typescript + jasmine framework + eslint + prettier
 5) clean up the project by running -> npm run clean
 6) build the project by running -> npm run build
 7) start the project by running -> npm run start
+8) run prettier -> npm run format
+9) run eslint -> npm run lint
 
 # how to use api in browser
 -> api endpoint URL: http://localhost:3000/api/images/resize?height=imageHeight&width=widthHeight&imageName=imageName
