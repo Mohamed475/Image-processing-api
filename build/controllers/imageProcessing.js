@@ -51,6 +51,10 @@ var imageProcessingController = function (req, res) { return __awaiter(void 0, v
                 height = req.query.height;
                 width = req.query.width;
                 imageName = req.query.imageName;
+                // Validate height & width to be only numbers
+                if (isNaN(Number(height)) || isNaN(Number(width))) {
+                    return [2 /*return*/, res.status(400).send('Height & Width must be only numbers')];
+                }
                 // Validate inputs
                 if (!height || !width || !imageName) {
                     return [2 /*return*/, res.status(400).send('Missing parameters, required: height, width, imageName')];

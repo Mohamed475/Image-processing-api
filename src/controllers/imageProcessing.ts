@@ -10,6 +10,11 @@ const imageProcessingController = async (req: Request, res: Response) => {
   const width = req.query.width
   const imageName = req.query.imageName
 
+  // Validate height and width to be only numbers
+  if (isNaN(Number(height)) || isNaN(Number(width))) {
+    return res.status(400).send('Height and Width must be only numbers')
+  }
+
   // Validate inputs
   if (!height || !width || !imageName) {
     return res.status(400).send('Missing parameters, required: height, width, imageName')
