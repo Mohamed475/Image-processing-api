@@ -24,10 +24,7 @@
   "homepage": "https://github.com/Mohamed475/Image-processing-api#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "jasmine": "^3.10.0",
-    "jasmine-spec-reporter": "^7.0.0",
-    "jimp": "^0.16.2",
-    "supertest": "^6.1.6"
+    "jimp": "^0.16.2"
   },
   "keywords": [],
   "devDependencies": {
@@ -41,10 +38,13 @@
     "eslint": "^8.23.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "jasmine": "^4.4.0",
+    "jasmine-spec-reporter": "^7.0.0",
     "m-zanaty-web-utils": "^0.0.19",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
+    "supertest": "^6.2.4",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.2",
     "yarn": "^1.22.19"
